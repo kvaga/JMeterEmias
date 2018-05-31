@@ -232,6 +232,7 @@ try{
 		log.warn(&quot;Raw data: &quot; + new String (rawResponseData));
 	log.info(&quot;=====================================&quot;);
 	prev.setResponseData(clearResponseData.getBytes());
+	prev.setDataEncoding(&quot;UTF-8&quot;);
 	public class UnicodeEscape {
 	        
 	        public String unescapeJSON(String escapedJSON) {
