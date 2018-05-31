@@ -196,7 +196,7 @@
             <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
             <stringProp name="HTTPSampler.path">/api/</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -207,7 +207,54 @@
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree/>
+          <hashTree>
+            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">package ru.kvaga.jmeter.utils.text;
+import org.apache.commons.lang3.StringEscapeUtils;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.jmeter.samplers.SampleResult;
+import java.io.BufferedReader;
+import java.lang.Byte;
+import java.io.ByteArrayInputStream;
+import java.io.InputStreamReader;
+
+try{
+	byte[] rawResponseData = prev.getResponseData();
+	UnicodeEscape ui = new UnicodeEscape();
+	String clearResponseData = ui.unescapeJSON(new String(rawResponseData));
+	log.info(&quot;=====================================&quot;);
+		log.warn(&quot;Decoded data: &quot; + clearResponseData);
+		log.warn(&quot;Raw data: &quot; + new String (rawResponseData));
+	log.info(&quot;=====================================&quot;);
+	prev.setResponseData(clearResponseData.getBytes());
+	public class UnicodeEscape {
+	        
+	        public String unescapeJSON(String escapedJSON) {
+	                return StringEscapeUtils.unescapeJson(escapedJSON);
+	        }
+	        
+	        public static void main(String[] args) {
+	                String str = &quot;\\u0412\\u0440\\u0430\\u0447-\\u043e\\u0444\\u0442\\u0430\\u043b\\u044c\\u043c\\u043e\\u043b\\u043e\\u0433\&quot;, \&quot;doctorFio\&quot;: \&quot;\\u0427\\u0435\\u0440\\u0435\\u0434\\u043d\\u0438\\u0447\\u0435\\u043d\\u043a\\u043e \\u041e\\u043b\\u044c\\u0433\\u0430 \\u0413\\u0435\\u043d\\u043d\\u0430\\u0434\\u0438\\u0435\\u0432\\u043d\\u0430&quot;;
+	                UnicodeEscape ue = new UnicodeEscape();
+	                System.out.println(ue.unescapeJSON(str));
+	                
+	        }
+	
+	}
+	
+}catch(Exception ex){
+	log.error(&quot;ERROR&quot;, ex);
+}
+
+</stringProp>
+            </BeanShellPostProcessor>
+            <hashTree/>
+          </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="warnings/warnings_list" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -918,7 +965,7 @@
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
               <boolProp name="resetInterpreter">false</boolProp>
@@ -1021,6 +1068,61 @@ try{
               <hashTree/>
             </hashTree>
           </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="23 /update/3/GMP/60.0.1/20180517113603/Linux_x86_64-gcc3/null/release-cck-ubuntu/Linux%204.4.0-31-generic%20(GTK%203.22.25%2Clibpulse%2010.0.0)/canonical/1.0/update.xml" enabled="false">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="23 /update/3/GMP/60.0.1/20180517113603/Linux_x86_64-gcc3/null/release-cck-ubuntu/Linux%204.4.0-31-generic%20(GTK%203.22.25%2Clibpulse%2010.0.0)/canonical/1.0/update.xml" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">aus5.mozilla.org</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/update/3/GMP/60.0.1/20180517113603/Linux_x86_64-gcc3/null/release-cck-ubuntu/Linux%204.4.0-31-generic%20(GTK%203.22.25%2Clibpulse%2010.0.0)/canonical/1.0/update.xml</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en-GB,en;q=0.5</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
         </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -1085,7 +1187,7 @@ try{
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="filename">/tmp/test-jmeter-emias.csv</stringProp>
+          <stringProp name="filename">/home/kvaga/JMeterWorkSpace/tmp/test-jmeter-emias.txt</stringProp>
           <boolProp name="ignoreFirstLine">false</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">true</boolProp>
