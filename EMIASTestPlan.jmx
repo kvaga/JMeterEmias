@@ -207,55 +207,7 @@
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree>
-            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
-              <boolProp name="resetInterpreter">false</boolProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="script">package ru.kvaga.jmeter.utils.text;
-import org.apache.commons.lang3.StringEscapeUtils;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.jmeter.samplers.SampleResult;
-import java.io.BufferedReader;
-import java.lang.Byte;
-import java.io.ByteArrayInputStream;
-import java.io.InputStreamReader;
-
-try{
-	byte[] rawResponseData = prev.getResponseData();
-	UnicodeEscape ui = new UnicodeEscape();
-	String clearResponseData = ui.unescapeJSON(new String(rawResponseData));
-	log.info(&quot;=====================================&quot;);
-		log.warn(&quot;Decoded data: &quot; + clearResponseData);
-		log.warn(&quot;Raw data: &quot; + new String (rawResponseData));
-	log.info(&quot;=====================================&quot;);
-	prev.setResponseData(clearResponseData.getBytes());
-	prev.setDataEncoding(&quot;UTF-8&quot;);
-	public class UnicodeEscape {
-	        
-	        public String unescapeJSON(String escapedJSON) {
-	                return StringEscapeUtils.unescapeJson(escapedJSON);
-	        }
-	        
-	        public static void main(String[] args) {
-	                String str = &quot;\\u0412\\u0440\\u0430\\u0447-\\u043e\\u0444\\u0442\\u0430\\u043b\\u044c\\u043c\\u043e\\u043b\\u043e\\u0433\&quot;, \&quot;doctorFio\&quot;: \&quot;\\u0427\\u0435\\u0440\\u0435\\u0434\\u043d\\u0438\\u0447\\u0435\\u043d\\u043a\\u043e \\u041e\\u043b\\u044c\\u0433\\u0430 \\u0413\\u0435\\u043d\\u043d\\u0430\\u0434\\u0438\\u0435\\u0432\\u043d\\u0430&quot;;
-	                UnicodeEscape ue = new UnicodeEscape();
-	                System.out.println(ue.unescapeJSON(str));
-	                
-	        }
-	
-	}
-	
-}catch(Exception ex){
-	log.error(&quot;ERROR&quot;, ex);
-}
-
-</stringProp>
-            </BeanShellPostProcessor>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="warnings/warnings_list" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -1160,6 +1112,53 @@ try{
           </objProp>
           <stringProp name="filename"></stringProp>
         </ResultCollector>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="script">package ru.kvaga.jmeter.utils.text;
+import org.apache.commons.lang3.StringEscapeUtils;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.jmeter.samplers.SampleResult;
+import java.io.BufferedReader;
+import java.lang.Byte;
+import java.io.ByteArrayInputStream;
+import java.io.InputStreamReader;
+
+try{
+	byte[] rawResponseData = prev.getResponseData();
+	UnicodeEscape ui = new UnicodeEscape();
+	String clearResponseData = ui.unescapeJSON(new String(rawResponseData));
+	log.debug(&quot;=====================================&quot;);
+		log.debug(&quot;Decoded data: &quot; + clearResponseData);
+		log.debug(&quot;Raw data: &quot; + new String (rawResponseData));
+	log.debug(&quot;=====================================&quot;);
+	prev.setResponseData(clearResponseData.getBytes());
+	prev.setDataEncoding(&quot;UTF-8&quot;);
+	public class UnicodeEscape {
+	        
+	        public String unescapeJSON(String escapedJSON) {
+	                return StringEscapeUtils.unescapeJson(escapedJSON);
+	        }
+	        
+	        public static void main(String[] args) {
+	                String str = &quot;\\u0412\\u0440\\u0430\\u0447-\\u043e\\u0444\\u0442\\u0430\\u043b\\u044c\\u043c\\u043e\\u043b\\u043e\\u0433\&quot;, \&quot;doctorFio\&quot;: \&quot;\\u0427\\u0435\\u0440\\u0435\\u0434\\u043d\\u0438\\u0447\\u0435\\u043d\\u043a\\u043e \\u041e\\u043b\\u044c\\u0433\\u0430 \\u0413\\u0435\\u043d\\u043d\\u0430\\u0434\\u0438\\u0435\\u0432\\u043d\\u0430&quot;;
+	                UnicodeEscape ue = new UnicodeEscape();
+	                System.out.println(ue.unescapeJSON(str));
+	                
+	        }
+	
+	}
+	
+}catch(Exception ex){
+	log.error(&quot;ERROR&quot;, ex);
+}
+
+</stringProp>
+        </BeanShellPostProcessor>
         <hashTree/>
         <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
           <collectionProp name="CookieManager.cookies"/>
