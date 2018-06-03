@@ -717,7 +717,7 @@
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;jBSIY5FrApwA~M0p4Padu&quot;,&quot;method&quot;:&quot;jsonproxy/get_doctors_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;7756210836002184&quot;,&quot;birth_date&quot;:&quot;1987-03-13T12:00:00+03:00&quot;,&quot;speciality_id&quot;:&quot;6&quot;,&quot;referral_id&quot;:null}}</stringProp>
+                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;v7QKy8FRThUjn4r2Bl2EP&quot;,&quot;method&quot;:&quot;jsonproxy/get_doctors_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;7756210836002184&quot;,&quot;birth_date&quot;:&quot;1987-03-13T12:00:00+03:00&quot;,&quot;speciality_id&quot;:&quot;6&quot;,&quot;referral_id&quot;:null}}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -1117,9 +1117,9 @@ try{
           <boolProp name="resetInterpreter">false</boolProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
-          <stringProp name="script">package ru.kvaga.jmeter.utils.text;
-import org.apache.commons.lang3.StringEscapeUtils;
-
+          <stringProp name="script">import org.apache.commons.lang3.StringEscapeUtils;
+import ru.kvaga.jmeter.utils.environment.Environment;
+import ru.kvaga.jmeter.utils.text.UnicodeEscape;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.jmeter.samplers.SampleResult;
@@ -1129,30 +1129,26 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
 
 try{
+	String osEncoding = &quot;&quot;;
+	Environment os = new Environment();
+	if(os.isOSLinuxUnix()){
+		osEncoding=&quot;UTF-8&quot;;
+	}else if(os.isOSWindows()){
+		osEncoding=&quot;cp1251&quot;;
+	}else{
+		osEncoding=&quot;UTF-8&quot;;
+	}
+	log.debug(&quot;OS Encoding: &quot; + OSEncoding);
 	byte[] rawResponseData = prev.getResponseData();
 	UnicodeEscape ui = new UnicodeEscape();
 	String clearResponseData = ui.unescapeJSON(new String(rawResponseData));
-	log.debug(&quot;=====================================&quot;);
-		log.debug(&quot;Decoded data: &quot; + clearResponseData);
-		log.debug(&quot;Raw data: &quot; + new String (rawResponseData));
-	log.debug(&quot;=====================================&quot;);
+	log.warn(&quot;=====================================&quot;);
+		log.warn(&quot;Decoded data: &quot; + clearResponseData);
+		log.warn(&quot;Raw data: &quot; + new String (rawResponseData));
+	log.warn(&quot;=====================================&quot;);
 	prev.setResponseData(clearResponseData.getBytes());
-	prev.setDataEncoding(&quot;UTF-8&quot;);
-	public class UnicodeEscape {
-	        
-	        public String unescapeJSON(String escapedJSON) {
-	                return StringEscapeUtils.unescapeJson(escapedJSON);
-	        }
-	        
-	        public static void main(String[] args) {
-	                String str = &quot;\\u0412\\u0440\\u0430\\u0447-\\u043e\\u0444\\u0442\\u0430\\u043b\\u044c\\u043c\\u043e\\u043b\\u043e\\u0433\&quot;, \&quot;doctorFio\&quot;: \&quot;\\u0427\\u0435\\u0440\\u0435\\u0434\\u043d\\u0438\\u0447\\u0435\\u043d\\u043a\\u043e \\u041e\\u043b\\u044c\\u0433\\u0430 \\u0413\\u0435\\u043d\\u043d\\u0430\\u0434\\u0438\\u0435\\u0432\\u043d\\u0430&quot;;
-	                UnicodeEscape ue = new UnicodeEscape();
-	                System.out.println(ue.unescapeJSON(str));
-	                
-	        }
-	
-	}
-	
+//	prev.setDataEncoding(&quot;UTF-8&quot;);
+	prev.setDataEncoding(osEncoding);
 }catch(Exception ex){
 	log.error(&quot;ERROR&quot;, ex);
 }
@@ -1187,7 +1183,7 @@ try{
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="filename">/home/kvaga/JMeterWorkSpace/tmp/test-jmeter-emias.txt</stringProp>
+          <stringProp name="filename">..\tmp\test-jmeter-emias.txt</stringProp>
           <boolProp name="ignoreFirstLine">false</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">true</boolProp>
