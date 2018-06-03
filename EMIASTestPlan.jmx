@@ -373,6 +373,33 @@
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">OMSNumber</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;oms_number&quot;: &quot;(.+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">birthday</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;birthday&quot;: &quot;(.+?)&quot;, </stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">label</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;label&quot;: &quot;(.+?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get_storage active_policy" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -511,7 +538,7 @@
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;iwWo2NE6RhtvJskCy0YvW&quot;,&quot;method&quot;:&quot;jsonproxy/digital_prescription:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;7756210836002184&quot;}}</stringProp>
+                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;iwWo2NE6RhtvJskCy0YvW&quot;,&quot;method&quot;:&quot;jsonproxy/digital_prescription:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;${OMSNumber}&quot;}}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -537,7 +564,7 @@
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;t6NSOhyMszBqykF3Sh~K~&quot;,&quot;method&quot;:&quot;jsonproxy/get_appointment_receptions_by_patient:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;7756210836002184&quot;,&quot;birth_date&quot;:&quot;1987-03-13T12:00:00+03:00&quot;}}</stringProp>
+                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;t6NSOhyMszBqykF3Sh~K~&quot;,&quot;method&quot;:&quot;jsonproxy/get_appointment_receptions_by_patient:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;${OMSNumber}&quot;,&quot;birth_date&quot;:&quot;${birthday}T12:00:00+03:00&quot;}}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -563,7 +590,7 @@
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;D4TU4DZtE~lWv58mF9elG&quot;,&quot;method&quot;:&quot;jsonproxy/get_patient_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;7756210836002184&quot;,&quot;birth_date&quot;:&quot;1987-03-13T12:00:00+03:00&quot;}}</stringProp>
+                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;D4TU4DZtE~lWv58mF9elG&quot;,&quot;method&quot;:&quot;jsonproxy/get_patient_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;${OMSNumber}&quot;,&quot;birth_date&quot;:&quot;${birthday}T12:00:00+03:00&quot;}}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -589,7 +616,7 @@
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;Jt6nmNKMYCIigppbFMCCM&quot;,&quot;method&quot;:&quot;jsonproxy/get_referrals_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;7756210836002184&quot;,&quot;birth_date&quot;:&quot;1987-03-13T12:00:00+03:00&quot;}}</stringProp>
+                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;D4TU4DZtE~lWv58mF9elG&quot;,&quot;method&quot;:&quot;jsonproxy/get_referrals_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;${OMSNumber}&quot;,&quot;birth_date&quot;:&quot;${birthday}T12:00:00+03:00&quot;}}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -659,7 +686,7 @@
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">[{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;H4iNQfoG6ThjnQTrs9ABb&quot;,&quot;method&quot;:&quot;facility_get&quot;,&quot;params&quot;:{&quot;facility_id&quot;:&quot;172&quot;}}]</stringProp>
+                    <stringProp name="Argument.value">[{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;D4TU4DZtE~lWv58mF9elG&quot;,&quot;method&quot;:&quot;facility_get&quot;,&quot;params&quot;:{&quot;facility_id&quot;:&quot;172&quot;}}]</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -688,7 +715,7 @@
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;v7QKy8FRThUjn4r2Bl2EP&quot;,&quot;method&quot;:&quot;jsonproxy/get_specialities_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;7756210836002184&quot;,&quot;birth_date&quot;:&quot;1987-03-13T12:00:00+03:00&quot;}}</stringProp>
+                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;D4TU4DZtE~lWv58mF9elG&quot;,&quot;method&quot;:&quot;jsonproxy/get_specialities_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;${OMSNumber}&quot;,&quot;birth_date&quot;:&quot;${birthday}T12:00:00+03:00&quot;}}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -709,249 +736,166 @@
             </HTTPSamplerProxy>
             <hashTree/>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="159 /api/" enabled="true"/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get_doctors_info" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;D4TU3DZtE~lWv58mF9elG&quot;,&quot;method&quot;:&quot;jsonproxy/get_doctors_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;${OMSNumber}&quot;,&quot;birth_date&quot;:&quot;${birthday}T12:00:00+03:00&quot;,&quot;speciality_id&quot;:&quot;6&quot;,&quot;referral_id&quot;:null}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/api/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="facility_get by facility_id" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;D4TU4DZtE~lWv58mF9elG&quot;,&quot;method&quot;:&quot;facility_get&quot;,&quot;params&quot;:{&quot;facility_id&quot;:&quot;207&quot;}},{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;BfwiABvDoBIXveftvrfLV&quot;,&quot;method&quot;:&quot;facility_get&quot;,&quot;params&quot;:{&quot;facility_id&quot;:&quot;10000296&quot;}},{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;UxBorOz0o2eXSpSl5Wbwg&quot;,&quot;method&quot;:&quot;facility_get&quot;,&quot;params&quot;:{&quot;facility_id&quot;:&quot;10000299&quot;}}]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">api.emias.info</stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">/resource/v1/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get_doctors_info" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;v7QKy8FRThUjn4r2Bl2EP&quot;,&quot;method&quot;:&quot;jsonproxy/get_doctors_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;7756210836002184&quot;,&quot;birth_date&quot;:&quot;1987-03-13T12:00:00+03:00&quot;,&quot;speciality_id&quot;:&quot;6&quot;,&quot;referral_id&quot;:null}}</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port">443</stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-              <stringProp name="HTTPSampler.path">/api/</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="Referer" elementType="Header">
-                    <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">https://emias.info/appointment/create/</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept-Language" elementType="Header">
-                    <stringProp name="Header.name">Accept-Language</stringProp>
-                    <stringProp name="Header.value">ru-RU,ru;q=0.5</stringProp>
-                  </elementProp>
-                  <elementProp name="origin" elementType="Header">
-                    <stringProp name="Header.name">origin</stringProp>
-                    <stringProp name="Header.value">https://emias.info</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept" elementType="Header">
-                    <stringProp name="Header.name">Accept</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="authorization" elementType="Header">
-                    <stringProp name="Header.name">authorization</stringProp>
-                    <stringProp name="Header.value">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNTgyNDQiLCJleHAiOjE1Mjc5NTA3MjAsImlzcyI6InBhc3Nwb3J0IiwidXNlcm5hbWUiOiJrdmFnYWxleEB5YW5kZXgucnUiLCJzZXNzaW9uIjoiMzQ4MWM1ZjgtN2JkOS00MDIwLWI2MDctZDk5Mjg5YTU0ZmE0IiwicmVmcmVzaF90b2tlbiI6InhVczdRbnpqU0RaT2lrZ1ZqRExyTW11eVl2dzVaeFVCYkhLTGxaSFRRVjdLbzJkVVUySmEySHNYOENMMENjZUtpZzVzZkx3cHozcWNTTWY4UjRjTjNFZ1JJeU5JeEhOM25ERVZtNHhXNjlMRlNxOGR3a2d1cEs4dkJtdnlvZ0dzY3U5REhvRjBUcmRtNHdUSlZKcTJ6dFV5N2xZQ0Y1QlVYRTJpenpKVk13YUIwWVE5YkhoSFBQZHZrQnh5aUdTb2pVakRIMWFBRW53cE9KR0lBQWZLMkJUdThtR25wblZ3THNYeFl5WmNQUTJPaFBWblZTY3NTNWpsY3JBV09NSyIsIlBvbGljeSI6IjU5ZThhMzgzYjNlOTgwMDAwMTkxNTExMyJ9.KZWU6l1mzK5lxeX_QlNLFwk0OXfg-PX4rWBo4ITwmLM</stringProp>
-                  </elementProp>
-                  <elementProp name="content-type" elementType="Header">
-                    <stringProp name="Header.name">content-type</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="x-app" elementType="Header">
-                    <stringProp name="Header.name">x-app</stringProp>
-                    <stringProp name="Header.value">portal-testing</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept-Encoding" elementType="Header">
-                    <stringProp name="Header.name">Accept-Encoding</stringProp>
-                    <stringProp name="Header.value">utf-8</stringProp>
-                  </elementProp>
-                  <elementProp name="User-Agent" elementType="Header">
-                    <stringProp name="Header.name">User-Agent</stringProp>
-                    <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="facility_get by facility_id" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">[{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;mlJY4HDchA7RPbILvYeWl&quot;,&quot;method&quot;:&quot;facility_get&quot;,&quot;params&quot;:{&quot;facility_id&quot;:&quot;207&quot;}},{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;BfwiABvDoBIXveftvrfLV&quot;,&quot;method&quot;:&quot;facility_get&quot;,&quot;params&quot;:{&quot;facility_id&quot;:&quot;10000296&quot;}},{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;UxBorOz0o2eXSpSl5Wbwg&quot;,&quot;method&quot;:&quot;facility_get&quot;,&quot;params&quot;:{&quot;facility_id&quot;:&quot;10000299&quot;}}]</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain">api.emias.info</stringProp>
-              <stringProp name="HTTPSampler.port">443</stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-              <stringProp name="HTTPSampler.path">/resource/v1/</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="Referer" elementType="Header">
-                    <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">https://emias.info/appointment/create/</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept-Language" elementType="Header">
-                    <stringProp name="Header.name">Accept-Language</stringProp>
-                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                  </elementProp>
-                  <elementProp name="origin" elementType="Header">
-                    <stringProp name="Header.name">origin</stringProp>
-                    <stringProp name="Header.value">https://emias.info</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept" elementType="Header">
-                    <stringProp name="Header.name">Accept</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="authorization" elementType="Header">
-                    <stringProp name="Header.name">authorization</stringProp>
-                    <stringProp name="Header.value">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNTgyNDQiLCJleHAiOjE1Mjc5NTA3MjAsImlzcyI6InBhc3Nwb3J0IiwidXNlcm5hbWUiOiJrdmFnYWxleEB5YW5kZXgucnUiLCJzZXNzaW9uIjoiMzQ4MWM1ZjgtN2JkOS00MDIwLWI2MDctZDk5Mjg5YTU0ZmE0IiwicmVmcmVzaF90b2tlbiI6InhVczdRbnpqU0RaT2lrZ1ZqRExyTW11eVl2dzVaeFVCYkhLTGxaSFRRVjdLbzJkVVUySmEySHNYOENMMENjZUtpZzVzZkx3cHozcWNTTWY4UjRjTjNFZ1JJeU5JeEhOM25ERVZtNHhXNjlMRlNxOGR3a2d1cEs4dkJtdnlvZ0dzY3U5REhvRjBUcmRtNHdUSlZKcTJ6dFV5N2xZQ0Y1QlVYRTJpenpKVk13YUIwWVE5YkhoSFBQZHZrQnh5aUdTb2pVakRIMWFBRW53cE9KR0lBQWZLMkJUdThtR25wblZ3THNYeFl5WmNQUTJPaFBWblZTY3NTNWpsY3JBV09NSyIsIlBvbGljeSI6IjU5ZThhMzgzYjNlOTgwMDAwMTkxNTExMyJ9.KZWU6l1mzK5lxeX_QlNLFwk0OXfg-PX4rWBo4ITwmLM</stringProp>
-                  </elementProp>
-                  <elementProp name="content-type" elementType="Header">
-                    <stringProp name="Header.name">content-type</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="x-app" elementType="Header">
-                    <stringProp name="Header.name">x-app</stringProp>
-                    <stringProp name="Header.value">portal-testing</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept-Encoding" elementType="Header">
-                    <stringProp name="Header.name">Accept-Encoding</stringProp>
-                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
-                  </elementProp>
-                  <elementProp name="User-Agent" elementType="Header">
-                    <stringProp name="Header.name">User-Agent</stringProp>
-                    <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-            </hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://emias.info/appointment/create/</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="origin" elementType="Header">
+                  <stringProp name="Header.name">origin</stringProp>
+                  <stringProp name="Header.value">https://emias.info</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="authorization" elementType="Header">
+                  <stringProp name="Header.name">authorization</stringProp>
+                  <stringProp name="Header.value">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNTgyNDQiLCJleHAiOjE1Mjc5NTA3MjAsImlzcyI6InBhc3Nwb3J0IiwidXNlcm5hbWUiOiJrdmFnYWxleEB5YW5kZXgucnUiLCJzZXNzaW9uIjoiMzQ4MWM1ZjgtN2JkOS00MDIwLWI2MDctZDk5Mjg5YTU0ZmE0IiwicmVmcmVzaF90b2tlbiI6InhVczdRbnpqU0RaT2lrZ1ZqRExyTW11eVl2dzVaeFVCYkhLTGxaSFRRVjdLbzJkVVUySmEySHNYOENMMENjZUtpZzVzZkx3cHozcWNTTWY4UjRjTjNFZ1JJeU5JeEhOM25ERVZtNHhXNjlMRlNxOGR3a2d1cEs4dkJtdnlvZ0dzY3U5REhvRjBUcmRtNHdUSlZKcTJ6dFV5N2xZQ0Y1QlVYRTJpenpKVk13YUIwWVE5YkhoSFBQZHZrQnh5aUdTb2pVakRIMWFBRW53cE9KR0lBQWZLMkJUdThtR25wblZ3THNYeFl5WmNQUTJPaFBWblZTY3NTNWpsY3JBV09NSyIsIlBvbGljeSI6IjU5ZThhMzgzYjNlOTgwMDAwMTkxNTExMyJ9.KZWU6l1mzK5lxeX_QlNLFwk0OXfg-PX4rWBo4ITwmLM</stringProp>
+                </elementProp>
+                <elementProp name="content-type" elementType="Header">
+                  <stringProp name="Header.name">content-type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="x-app" elementType="Header">
+                  <stringProp name="Header.name">x-app</stringProp>
+                  <stringProp name="Header.value">portal-testing</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="161 /api/" enabled="true"/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get_available_resource_schedule_info" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;D4TU4DZtE~lWv58mF9elG&quot;,&quot;method&quot;:&quot;jsonproxy/get_available_resource_schedule_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;${OMSNumber}&quot;,&quot;birth_date&quot;:&quot;${birthday}T12:00:00+03:00&quot;,&quot;lpu_id&quot;:172,&quot;available_resource_id&quot;:&quot;10327189&quot;,&quot;complex_resource_id&quot;:&quot;10170622&quot;,&quot;referral_id&quot;:null,&quot;appointment_id&quot;:null}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port">443</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">/api/</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get_available_resource_schedule_info" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;7LRzimGuu2l5J6_bceARX&quot;,&quot;method&quot;:&quot;jsonproxy/get_available_resource_schedule_info:2.1.0&quot;,&quot;params&quot;:{&quot;oms_number&quot;:&quot;7756210836002184&quot;,&quot;birth_date&quot;:&quot;1987-03-13T12:00:00+03:00&quot;,&quot;lpu_id&quot;:172,&quot;available_resource_id&quot;:&quot;10327189&quot;,&quot;complex_resource_id&quot;:&quot;10170622&quot;,&quot;referral_id&quot;:null,&quot;appointment_id&quot;:null}}</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port">443</stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-              <stringProp name="HTTPSampler.path">/api/</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="Referer" elementType="Header">
-                    <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">https://emias.info/appointment/create/</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept-Language" elementType="Header">
-                    <stringProp name="Header.name">Accept-Language</stringProp>
-                    <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                  </elementProp>
-                  <elementProp name="origin" elementType="Header">
-                    <stringProp name="Header.name">origin</stringProp>
-                    <stringProp name="Header.value">https://emias.info</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept" elementType="Header">
-                    <stringProp name="Header.name">Accept</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="authorization" elementType="Header">
-                    <stringProp name="Header.name">authorization</stringProp>
-                    <stringProp name="Header.value">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNTgyNDQiLCJleHAiOjE1Mjc5NTA3MjAsImlzcyI6InBhc3Nwb3J0IiwidXNlcm5hbWUiOiJrdmFnYWxleEB5YW5kZXgucnUiLCJzZXNzaW9uIjoiMzQ4MWM1ZjgtN2JkOS00MDIwLWI2MDctZDk5Mjg5YTU0ZmE0IiwicmVmcmVzaF90b2tlbiI6InhVczdRbnpqU0RaT2lrZ1ZqRExyTW11eVl2dzVaeFVCYkhLTGxaSFRRVjdLbzJkVVUySmEySHNYOENMMENjZUtpZzVzZkx3cHozcWNTTWY4UjRjTjNFZ1JJeU5JeEhOM25ERVZtNHhXNjlMRlNxOGR3a2d1cEs4dkJtdnlvZ0dzY3U5REhvRjBUcmRtNHdUSlZKcTJ6dFV5N2xZQ0Y1QlVYRTJpenpKVk13YUIwWVE5YkhoSFBQZHZrQnh5aUdTb2pVakRIMWFBRW53cE9KR0lBQWZLMkJUdThtR25wblZ3THNYeFl5WmNQUTJPaFBWblZTY3NTNWpsY3JBV09NSyIsIlBvbGljeSI6IjU5ZThhMzgzYjNlOTgwMDAwMTkxNTExMyJ9.KZWU6l1mzK5lxeX_QlNLFwk0OXfg-PX4rWBo4ITwmLM</stringProp>
-                  </elementProp>
-                  <elementProp name="content-type" elementType="Header">
-                    <stringProp name="Header.name">content-type</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="x-app" elementType="Header">
-                    <stringProp name="Header.name">x-app</stringProp>
-                    <stringProp name="Header.value">portal-testing</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept-Encoding" elementType="Header">
-                    <stringProp name="Header.name">Accept-Encoding</stringProp>
-                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
-                  </elementProp>
-                  <elementProp name="User-Agent" elementType="Header">
-                    <stringProp name="Header.name">User-Agent</stringProp>
-                    <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-            </hashTree>
-            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
-              <stringProp name="filename"></stringProp>
-              <stringProp name="parameters"></stringProp>
-              <boolProp name="resetInterpreter">false</boolProp>
-              <stringProp name="script">import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.jmeter.samplers.SampleResult;
-import java.io.BufferedReader;
-import java.lang.Byte;
-import java.io.ByteArrayInputStream;
-import java.io.InputStreamReader;
-import java.util.zip.GZIPInputStream;
-try{
-	byte[] data = prev.getResponseData();
-	String message = prev.getResponseMessage();
-	log.info(&quot;=====================================&quot;);
-	log.warn(&quot;data: &quot; + new String(data));
-	log.warn(&quot;message: &quot; + message);
-	
-	ByteArrayInputStream bis = new ByteArrayInputStream(data);
-	
-	GZIPInputStream gis = new GZIPInputStream(bis);
-	//InputStreamReader reader = new InputStreamReader(gis);
-	//BufferedReader in = new BufferedReader(reader);
-	//byte[] decompressed = IOUtils.toByteArray(in);
-	//SampleResult.setResponseData(decompressed);
-	//log.info(&quot;decompressed data:&quot; + new String(decompressed));
-	log.info(&quot;=====================================&quot;);
-}catch(Exception ex){
-	log.error(&quot;ERROR&quot;, ex);
-}
-
-</stringProp>
-            </BeanShellPostProcessor>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">https://emias.info/appointment/create/</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="origin" elementType="Header">
+                  <stringProp name="Header.name">origin</stringProp>
+                  <stringProp name="Header.value">https://emias.info</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="authorization" elementType="Header">
+                  <stringProp name="Header.name">authorization</stringProp>
+                  <stringProp name="Header.value">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNTgyNDQiLCJleHAiOjE1Mjc5NTA3MjAsImlzcyI6InBhc3Nwb3J0IiwidXNlcm5hbWUiOiJrdmFnYWxleEB5YW5kZXgucnUiLCJzZXNzaW9uIjoiMzQ4MWM1ZjgtN2JkOS00MDIwLWI2MDctZDk5Mjg5YTU0ZmE0IiwicmVmcmVzaF90b2tlbiI6InhVczdRbnpqU0RaT2lrZ1ZqRExyTW11eVl2dzVaeFVCYkhLTGxaSFRRVjdLbzJkVVUySmEySHNYOENMMENjZUtpZzVzZkx3cHozcWNTTWY4UjRjTjNFZ1JJeU5JeEhOM25ERVZtNHhXNjlMRlNxOGR3a2d1cEs4dkJtdnlvZ0dzY3U5REhvRjBUcmRtNHdUSlZKcTJ6dFV5N2xZQ0Y1QlVYRTJpenpKVk13YUIwWVE5YkhoSFBQZHZrQnh5aUdTb2pVakRIMWFBRW53cE9KR0lBQWZLMkJUdThtR25wblZ3THNYeFl5WmNQUTJPaFBWblZTY3NTNWpsY3JBV09NSyIsIlBvbGljeSI6IjU5ZThhMzgzYjNlOTgwMDAwMTkxNTExMyJ9.KZWU6l1mzK5lxeX_QlNLFwk0OXfg-PX4rWBo4ITwmLM</stringProp>
+                </elementProp>
+                <elementProp name="content-type" elementType="Header">
+                  <stringProp name="Header.name">content-type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="x-app" elementType="Header">
+                  <stringProp name="Header.name">x-app</stringProp>
+                  <stringProp name="Header.value">portal-testing</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
             <hashTree/>
           </hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="log off" enabled="true"/>
@@ -1021,61 +965,6 @@ try{
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="23 /update/3/GMP/60.0.1/20180517113603/Linux_x86_64-gcc3/null/release-cck-ubuntu/Linux%204.4.0-31-generic%20(GTK%203.22.25%2Clibpulse%2010.0.0)/canonical/1.0/update.xml" enabled="false">
-            <boolProp name="TransactionController.includeTimers">false</boolProp>
-            <boolProp name="TransactionController.parent">false</boolProp>
-          </TransactionController>
-          <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="23 /update/3/GMP/60.0.1/20180517113603/Linux_x86_64-gcc3/null/release-cck-ubuntu/Linux%204.4.0-31-generic%20(GTK%203.22.25%2Clibpulse%2010.0.0)/canonical/1.0/update.xml" enabled="true">
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-                <collectionProp name="Arguments.arguments"/>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain">aus5.mozilla.org</stringProp>
-              <stringProp name="HTTPSampler.port">443</stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/update/3/GMP/60.0.1/20180517113603/Linux_x86_64-gcc3/null/release-cck-ubuntu/Linux%204.4.0-31-generic%20(GTK%203.22.25%2Clibpulse%2010.0.0)/canonical/1.0/update.xml</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="Accept-Language" elementType="Header">
-                    <stringProp name="Header.name">Accept-Language</stringProp>
-                    <stringProp name="Header.value">en-GB,en;q=0.5</stringProp>
-                  </elementProp>
-                  <elementProp name="Cache-Control" elementType="Header">
-                    <stringProp name="Header.name">Cache-Control</stringProp>
-                    <stringProp name="Header.value">no-cache</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept-Encoding" elementType="Header">
-                    <stringProp name="Header.name">Accept-Encoding</stringProp>
-                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
-                  </elementProp>
-                  <elementProp name="Pragma" elementType="Header">
-                    <stringProp name="Header.name">Pragma</stringProp>
-                    <stringProp name="Header.value">no-cache</stringProp>
-                  </elementProp>
-                  <elementProp name="User-Agent" elementType="Header">
-                    <stringProp name="Header.name">User-Agent</stringProp>
-                    <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept" elementType="Header">
-                    <stringProp name="Header.name">Accept</stringProp>
-                    <stringProp name="Header.value">*/*</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-            </hashTree>
-          </hashTree>
         </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -1118,8 +1007,6 @@ try{
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
           <stringProp name="script">import org.apache.commons.lang3.StringEscapeUtils;
-import ru.kvaga.jmeter.utils.environment.Environment;
-import ru.kvaga.jmeter.utils.text.UnicodeEscape;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.jmeter.samplers.SampleResult;
@@ -1127,6 +1014,11 @@ import java.io.BufferedReader;
 import java.lang.Byte;
 import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
+
+// You have to add jar file https://github.com/kvaga/JMeterUtils/blob/master/kvaga-jmeter.jar to the $JMeter/lib folder for getting available these two classes
+import ru.kvaga.jmeter.utils.environment.Environment;
+import ru.kvaga.jmeter.utils.text.UnicodeEscape;
+
 
 try{
 	String osEncoding = &quot;&quot;;
@@ -1142,12 +1034,11 @@ try{
 	byte[] rawResponseData = prev.getResponseData();
 	UnicodeEscape ui = new UnicodeEscape();
 	String clearResponseData = ui.unescapeJSON(new String(rawResponseData));
-	log.warn(&quot;=====================================&quot;);
-		log.warn(&quot;Decoded data: &quot; + clearResponseData);
-		log.warn(&quot;Raw data: &quot; + new String (rawResponseData));
-	log.warn(&quot;=====================================&quot;);
+//	log.warn(&quot;=====================================&quot;);
+//		log.warn(&quot;Decoded data: &quot; + clearResponseData);
+//		log.warn(&quot;Raw data: &quot; + new String (rawResponseData));
+//	log.warn(&quot;=====================================&quot;);
 	prev.setResponseData(clearResponseData.getBytes());
-//	prev.setDataEncoding(&quot;UTF-8&quot;);
 	prev.setDataEncoding(osEncoding);
 }catch(Exception ex){
 	log.error(&quot;ERROR&quot;, ex);
